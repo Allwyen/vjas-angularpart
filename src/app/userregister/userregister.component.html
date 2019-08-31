@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="">SignIn</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/register">SignUp</a>
+    </li>
+  </ul>
+</nav>
+
+<form (ngSubmit)=onSubmit(f) #f="ngForm">
+  <table class="table">
+    <tr><td>Fullname</td><td><input type="text" class="form-control" name="fname" ngModel></td></tr>
+    <tr><td>Email</td><td><input type="email" class="form-control" name="uemail" ngModel></td></tr>
+    <tr><td>Address</td><td><textarea name="uaddress" class="form-control" cols="30" rows="3" ngModel></textarea></td></tr>
+    <tr><td>Mobile</td><td><input type="tel" class="form-control" name="umobile" ngModel></td></tr>
+    <tr><td>Username</td><td><input type="text" class="form-control" name="uname" ngModel></td></tr>
+    <tr><td>Password</td><td><input type="password" class="form-control" name="upass" ngModel></td></tr>
+    <tr><td>Confirm Password</td><td><input type="password" class="form-control" name="ucpass" ngModel></td></tr>
+    <tr><td><input type="reset" class="btn btn-danger" value="Clear"></td><td><input type="submit" class="btn btn-primary" value="Register"></td></tr>
+  </table>
+</form>
