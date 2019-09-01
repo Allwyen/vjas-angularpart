@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-userregister',
-  templateUrl: './userregister.component.html',
-  styleUrls: ['./userregister.component.css']
+  selector: 'app-forgotpwd',
+  templateUrl: './forgotpwd.component.html',
+  styleUrls: ['./forgotpwd.component.css']
 })
-export class UserregisterComponent implements OnInit {
+export class ForgotpwdComponent implements OnInit {
 
-  constructor(private apiservice:ApiService) { }
+  constructor(private apiservice:ApiService,private router:Router) { }
 
   getpwd= '';
   getcpwd = '';
@@ -25,12 +26,12 @@ export class UserregisterComponent implements OnInit {
     }
     else
     {
-      this.apiservice.vjasregister(data.value).subscribe((response:any)=>{
+      this.apiservice.vjasforgotpwd(data.value).subscribe((response:any)=>{
         var result = response as string [];
         console.log(result);
         alert(result);
       });
-    } 
+    }
   }
 
   ngOnInit() {

@@ -18,4 +18,8 @@ export class ApiService {
     return this.http.post("http://localhost:5566/vjaslogin",data);
   }
 
+  vjasforgotpwd(data)
+  {
+    return this.http.post("http://localhost:5566/vjasforgotpwd",data);
+  }
 }
