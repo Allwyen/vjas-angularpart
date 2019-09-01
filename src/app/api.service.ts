@@ -22,4 +22,8 @@ export class ApiService {
   {
     return this.http.post("http://localhost:5566/vjasforgotpwd",data);
   }
+  vjasviewuser()
+  {
+    return this.http.get("http://localhost:5566/vjasviewuser");
+  }
 }

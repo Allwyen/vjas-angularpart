@@ -7,10 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 const appRoutes:Routes = [
   {path:'',component:UserloginComponent},
   {path:'register',component:UserregisterComponent},
+  {path:'forgotpwd',component:ForgotpwdComponent},
   {path:'staffhome',component:StaffhomeComponent},
   {path:'adminhome',component:AdminhomeComponent},
   {path:'mechanichome',component:MechanichomeComponent},
-  {path:'forgotpwd',component:ForgotpwdComponent}
+  {path:'userapproval',component:UserapprovalComponent}
+  
 ];
 
 import { AppComponent } from './app.component';
@@ -20,6 +22,7 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { StaffhomeComponent } from './staffhome/staffhome.component';
 import { MechanichomeComponent } from './mechanichome/mechanichome.component';
 import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
+import { UserapprovalComponent } from './userapproval/userapproval.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
     AdminhomeComponent,
     StaffhomeComponent,
     MechanichomeComponent,
-    ForgotpwdComponent
+    ForgotpwdComponent,
+    UserapprovalComponent
   ],
   imports: [
     BrowserModule,
