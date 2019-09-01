@@ -7,19 +7,32 @@
       <a class="nav-link" routerLink="/userapproval">Users</a>
     </li>
   </ul>
+  <button class="float-right btn btn-light" (click)="logout()">LogOut</button>
 </nav>
-
-<form (ngSubmit)=onSubmit(f) #f="ngForm">
-  <table class="table ml-5">
-    <tr><td><input type="text" class="form-control" name="fname" placeholder="Enter employee name" ngModel></td><td><input type="submit" class="btn btn-primary" value="Search"></td></tr>
-  </table>
-</form>
 
 <div class="card-columns p-5">
   <div class="card" *ngFor="let data of mydata">
       <div class="card-body">
           <h5 class="card-title">{{data.fname}}</h5>
-          <p class="card-text"><strong>Email: </strong>{{data.uemail}}<br><strong>Mobile: </strong>{{data.umobile}}</p>
+          <p class="card-text"><strong>Email: </strong>{{data.uemail}}<br><strong>Mobile: </strong>{{data.umobile}}
+            <br>
+              <strong>User Role: </strong>
+              <label [ngClass]="{
+                'text-primary':data.urole,
+                'text-danger':data.urole === 'Not Yet a Member'
+              }">{{data.urole}}</label>
+            <br>
+            <strong>Revoke Status:</strong>
+              <select class="form-control" name="uroleset">
+                <option selected>Choose...</option>
+                <option value=0>Admin</option>
+                <option value=1>Staff</option>
+                <option value=2>Mechanic</option>
+                <option class="btn btn-danger">Remove User</option>
+              </select>
+              <br>
+              <button class="btn btn-danger" (click)="revokeuser()">Revoke</button>
+          </p>
       </div>
   </div>
 </div>

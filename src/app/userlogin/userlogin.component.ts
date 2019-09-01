@@ -27,7 +27,7 @@ export class UserloginComponent implements OnInit {
           alert('Login Successfull!!');
 
           const uid = response[0]._id;
-          //localStorage.setItem('uid',uid);
+          localStorage.setItem('uid',uid);
 
           this.router.navigateByUrl('adminhome');
         }

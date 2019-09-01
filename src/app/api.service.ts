@@ -26,4 +26,8 @@ export class ApiService {
   {
     return this.http.get("http://localhost:5566/vjasviewuser");
   }
+  vjasuserstatus(data)
+  {
+    return this.http.post("http://localhost:5566/vjasuserstatus",data);
+  }
 }
