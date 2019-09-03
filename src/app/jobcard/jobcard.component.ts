@@ -1,46 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { ApiService } from '../api.service';
-
+import { of } from 'rxjs';
 @Component({
-  selector: 'app-carservice',
-  templateUrl: './carservice.component.html',
-  styleUrls: ['./carservice.component.css']
+  selector: 'app-jobcard',
+  templateUrl: './jobcard.component.html',
+  styleUrls: ['./jobcard.component.css']
 })
-export class CarserviceComponent implements OnInit {
+export class JobcardComponent implements OnInit {
 
   constructor(private router:Router,private apiservice:ApiService) { }
 
-  status=false;
-
   mydata:Array<object> = [];
-  
+
   onSubmit(data:NgForm)
   {
-
-    if(data.value.cregno === '')
-    {
-      this.status=false;
-      alert('Enter a Registration Number to search!!')
-    }
-    else
-    {
-      this.apiservice.vjasviewcar(data.value).subscribe((response:any)=>{
-        
-        //console.log([response][0]._id);
-        if([response].length > 0)
-        {
-          if([response][0]._id)
-          {
-            this.status = true;
-            this.mydata = [response];
-          }
-          this.status = false;
-        }
-      });
-    }
     
+    this.apiservice.vjasinsertcar(data.value).subscribe((response:Array<object>)=>{
+      this.mydata = response;
+      if([this.mydata].length > 0)
+      {
+        console.log(this.mydata);
+        alert('New JobCard Created');
+      }
+    });
   }
 
   ngOnInit() {
@@ -56,6 +40,7 @@ export class CarserviceComponent implements OnInit {
     {
       this.router.navigateByUrl('');
     }
+  
   }
 
   logout()
