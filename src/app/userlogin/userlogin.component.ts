@@ -39,6 +39,10 @@ export class UserloginComponent implements OnInit {
         {
           this.router.navigateByUrl('mechanichome');
         }
+        else if(response[0].urole == 3)
+        {
+          alert('Removed User!!Cannot access this site');
+        }
         else if(response[0].urole == null)
         {
           alert('Admin approval needed!!');

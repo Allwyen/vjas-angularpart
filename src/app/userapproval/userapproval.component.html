@@ -13,6 +13,7 @@
 <div class="card-columns p-5">
   <div class="card" *ngFor="let data of mydata">
       <div class="card-body">
+          <input type="hidden" name="eid" #eid [(ngModel)]="data._id">
           <h5 class="card-title">{{data.fname}}</h5>
           <p class="card-text"><strong>Email: </strong>{{data.uemail}}<br><strong>Mobile: </strong>{{data.umobile}}
             <br>
@@ -22,16 +23,16 @@
                 'text-danger':data.urole === 'Not Yet a Member'
               }">{{data.urole}}</label>
             <br>
-            <strong>Revoke Status:</strong>
-              <select class="form-control" name="uroleset">
+            <strong>Set User Role:</strong>
+              <select class="form-control" name="uroleset" #uroleset>
                 <option selected>Choose...</option>
-                <option value=0>Admin</option>
-                <option value=1>Staff</option>
-                <option value=2>Mechanic</option>
-                <option class="btn btn-danger">Remove User</option>
+                <option value="0">Admin</option>
+                <option value="1">Staff</option>
+                <option value="2">Mechanic</option>
+                <option class="btn btn-danger" value="3">Remove User</option>
               </select>
               <br>
-              <button class="btn btn-danger" (click)="revokeuser()">Revoke</button>
+              <button class="btn btn-danger" (click)="revokeuser(eid.value,uroleset.value)">Revoke</button>
           </p>
       </div>
   </div>

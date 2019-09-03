@@ -13,6 +13,8 @@ export class UserapprovalComponent implements OnInit {
 
   mydata:Array<object> = [];
 
+  userdata:Array<object> = [];
+
   ngOnInit() {
 
     const userid = localStorage.getItem('uid');
@@ -48,9 +50,18 @@ export class UserapprovalComponent implements OnInit {
     });
   }
 
-  revokeuser()
-  {
-
+  revokeuser(x,y)
+  { 
+    console.log("UserID: "+x+" Userrole: "+y); 
+    var eid = x;
+    var uroleset = parseInt(y);
+  
+    this.userdata = [{eid:eid,uroleset:uroleset}]
+    console.log(this.userdata);
+    this.apiservice.vjasuserstatus(this.userdata[0]).subscribe((response:any)=>{
+      var result = response as string [];
+      alert(result);
+    });   
   }
 
   logout()
