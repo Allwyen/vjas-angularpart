@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/staffhome">Home</a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link" routerLink="/carservice">Job Card</a>
+        </li>
+    </ul>
+    <button class="float-right btn btn-light" (click)="logout()">LogOut</button>
+  </nav>
+
+  <table class="table">
+    <tr><td><input type="text" name="cregno" #cregno class="form-control" placeholder="Enter Car Registration No"></td><td><input type="button" class="btn btn-primary" (click)="searchcar(cregno.value)" value="Search"></td></tr>
+  </table>
+
+
+
+<ng-template #nodata>
+  <form (ngSubmit)=onSubmit(f) #f="ngForm">
+    <table class="table">
+        <div>
+          <tr><td></td><td><h5>Enter the Car Details</h5></td></tr>
+          <tr><td>Registration No:</td><td><input type="text" class="form-control" name="cregno" ngModel></td></tr>
+          <tr><td>Car Model:</td><td><input type="text" class="form-control" name="cmodel" ngModel></td></tr>
+          <tr><td>Chassis No:</td><td><input type="text" class="form-control" name="ccno" ngModel></td></tr>
+          <tr><td>Owner Name:</td><td><input type="text" class="form-control" name="coname" ngModel></td></tr>
+          <tr><td>Email:</td><td><input type="email" class="form-control" name="coemail" ngModel></td></tr>
+          <tr><td>Mobile:</td><td><input type="text" class="form-control" name="comobile" ngModel></td></tr>
+          <tr><td><input type="reset" class="btn btn-danger" value="Reset"></td><td><input type="submit" class="btn btn-primary" value="Register Car"></td></tr>
+        </div>
+    </table>
+  </form>
+</ng-template>
+
+<div *ngIf="status else nodata">
+    <table class="table">
+        <div *ngFor="let data of mydata">
+          <!-- <tr><td></td><td><input type="hidden" name="cid" [(ngModel)]="data._id"></td></tr> -->
+          <tr><td></td><td><h5>Update Car Details</h5></td></tr>
+          <tr><td>Registration No:</td><td><input type="text" class="form-control" name="cregno" [(ngModel)]="data.cregno" disabled></td></tr>
+          <tr><td>Car Model:</td><td><input type="text" class="form-control" name="cmodel" [(ngModel)]="data.cmodel" disabled></td></tr>
+          <tr><td>Chassis No:</td><td><input type="text" class="form-control" name="ccno" [(ngModel)]="data.ccno" disabled></td></tr>
+          <tr><td>Owner Name:</td><td><input type="text" class="form-control" name="coname" [(ngModel)]="data.coname"></td></tr>
+          <tr><td>Email:</td><td><input type="email" class="form-control" name="coemail" [(ngModel)]="data.coemail"></td></tr>
+          <tr><td>Mobile:</td><td><input type="text" class="form-control" name="comobile" [(ngModel)]="data.comobile"></td></tr>
+          <tr><td><input type="button" class="btn btn-danger" value="Delete"></td><td><input type="button" class="btn btn-primary" value="Update"></td></tr>
+        </div>
+    </table>
+</div>

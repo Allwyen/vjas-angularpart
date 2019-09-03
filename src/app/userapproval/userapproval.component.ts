@@ -18,12 +18,18 @@ export class UserapprovalComponent implements OnInit {
   ngOnInit() {
 
     const userid = localStorage.getItem('uid');
+    const userrole = localStorage.getItem('uroleid')
     console.log('User ID :'+userid);
 
     if(userid === null)
     {
       this.router.navigateByUrl('');
     }
+    else if(parseInt(userrole) != 0)
+    {
+      this.router.navigateByUrl('');
+    }
+  
 
     this.apiservice.vjasviewuser().subscribe((response:any)=>{
       for(var i=0;i<response.length;i++)
@@ -67,6 +73,7 @@ export class UserapprovalComponent implements OnInit {
   logout()
   {
     localStorage.removeItem('uid');
+    localStorage.removeItem('uroleid');
     this.router.navigateByUrl('');
   }
 

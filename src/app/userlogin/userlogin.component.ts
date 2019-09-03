@@ -27,12 +27,23 @@ export class UserloginComponent implements OnInit {
           alert('Login Successfull!!');
 
           const uid = response[0]._id;
+          const uroleid = response[0].urole;
+          
           localStorage.setItem('uid',uid);
+          localStorage.setItem('uroleid',uroleid);
 
           this.router.navigateByUrl('adminhome');
         }
         else if(response[0].urole == 1)
         {
+          alert('Login Successfull!!');
+
+          const uid = response[0]._id;
+          const uroleid = response[0].urole;
+
+          localStorage.setItem('uid',uid);
+          localStorage.setItem('uroleid',uroleid);
+
           this.router.navigateByUrl('staffhome');
         }
         else if(response[0].urole == 2)

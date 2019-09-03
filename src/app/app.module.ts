@@ -11,7 +11,8 @@ const appRoutes:Routes = [
   {path:'staffhome',component:StaffhomeComponent},
   {path:'adminhome',component:AdminhomeComponent},
   {path:'mechanichome',component:MechanichomeComponent},
-  {path:'userapproval',component:UserapprovalComponent}
+  {path:'userapproval',component:UserapprovalComponent},
+  {path:'carservice',component:CarserviceComponent}
   
 ];
 
@@ -23,6 +24,7 @@ import { StaffhomeComponent } from './staffhome/staffhome.component';
 import { MechanichomeComponent } from './mechanichome/mechanichome.component';
 import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
 import { UserapprovalComponent } from './userapproval/userapproval.component';
+import { CarserviceComponent } from './carservice/carservice.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { UserapprovalComponent } from './userapproval/userapproval.component';
     StaffhomeComponent,
     MechanichomeComponent,
     ForgotpwdComponent,
-    UserapprovalComponent
+    UserapprovalComponent,
+    CarserviceComponent
   ],
   imports: [
     BrowserModule,
