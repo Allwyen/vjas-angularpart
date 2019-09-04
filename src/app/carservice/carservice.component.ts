@@ -12,7 +12,7 @@ export class CarserviceComponent implements OnInit {
 
   constructor(private router:Router,private apiservice:ApiService) { }
 
-  status=false;
+  status=true;
 
   mydata:Array<object> = [];
   
@@ -21,26 +21,47 @@ export class CarserviceComponent implements OnInit {
 
     if(data.value.cregno === '')
     {
-      this.status=false;
-      alert('Enter a Registration Number to search!!')
+      this.status=true;
+      alert('Enter a Registration Number to search!!');
     }
     else
     {
       this.apiservice.vjasviewcar(data.value).subscribe((response:any)=>{
         
-        //console.log([response][0]._id);
+        console.log([response].length);
+        
         if([response].length > 0)
         {
-          if([response][0]._id)
+          if(!response)
           {
-            this.status = true;
-            this.mydata = [response];
+            this.status=true;
+            alert('Car details Not Found!! Open New JobCard');
           }
-          this.status = false;
+          else
+          {
+            this.status=false;
+            this.mydata=[response];
+          }
         }
       });
     }
     
+  }
+
+  updatecar()
+  {
+    console.log(this.mydata[0]);
+    this.apiservice.vjasupdatecar(this.mydata[0]).subscribe((response:any)=>{
+      console.log(response);
+      if(!response)
+      {
+        alert('Update Unsuccessfull!!');
+      }
+      else
+      {
+        alert('Updated Successfully!!');
+      }
+    });
   }
 
   ngOnInit() {

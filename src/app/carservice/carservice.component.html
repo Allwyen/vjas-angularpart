@@ -19,12 +19,12 @@
   </table>
 </form>
 
-<div *ngIf="!status else yesdata"></div>
+<div *ngIf="status else nodata"></div>
 
-<ng-template #yesdata>
+<ng-template #nodata>
   <table class="table">
       <div *ngFor="let data of mydata">
-        <!-- <tr><td></td><td><input type="hidden" name="cid" [(ngModel)]="data._id"></td></tr> -->
+        <tr><input type="hidden" name="cid" [(ngModel)]="data._id"></tr>
         <tr><td></td><td><h5>Update Car Details</h5></td></tr>
         <tr><td>Registration No:</td><td><input type="text" class="form-control" name="cregno" [(ngModel)]="data.cregno" disabled></td></tr>
         <tr><td>Car Model:</td><td><input type="text" class="form-control" name="cmodel" [(ngModel)]="data.cmodel" disabled></td></tr>
@@ -32,7 +32,7 @@
         <tr><td>Owner Name:</td><td><input type="text" class="form-control" name="coname" [(ngModel)]="data.coname"></td></tr>
         <tr><td>Email:</td><td><input type="email" class="form-control" name="coemail" [(ngModel)]="data.coemail"></td></tr>
         <tr><td>Mobile:</td><td><input type="text" class="form-control" name="comobile" [(ngModel)]="data.comobile"></td></tr>
-        <tr><td><input type="button" class="btn btn-danger" value="Delete"></td><td><input type="button" class="btn btn-primary" value="Update"></td></tr>
+        <tr><td></td><td><input type="button" class="btn btn-primary" (click)="updatecar()" value="Update"></td></tr>
       </div>
   </table>
 </ng-template>
