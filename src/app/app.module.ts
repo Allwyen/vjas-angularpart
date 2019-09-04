@@ -13,7 +13,8 @@ const appRoutes:Routes = [
   {path:'mechanichome',component:MechanichomeComponent},
   {path:'userapproval',component:UserapprovalComponent},
   {path:'updatejobcard',component:CarserviceComponent},
-  {path:'newjobcard',component:JobcardComponent}
+  {path:'newjobcard',component:JobcardComponent},
+  {path:'carissue',component:CarissueComponent}
   
 ];
 
@@ -27,6 +28,7 @@ import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
 import { UserapprovalComponent } from './userapproval/userapproval.component';
 import { CarserviceComponent } from './carservice/carservice.component';
 import { JobcardComponent } from './jobcard/jobcard.component';
+import { CarissueComponent } from './carissue/carissue.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { JobcardComponent } from './jobcard/jobcard.component';
     ForgotpwdComponent,
     UserapprovalComponent,
     CarserviceComponent,
-    JobcardComponent
+    JobcardComponent,
+    CarissueComponent
   ],
   imports: [
     BrowserModule,

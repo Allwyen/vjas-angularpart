@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ApiService } from '../api.service';
-import { of } from 'rxjs';
 @Component({
   selector: 'app-jobcard',
   templateUrl: './jobcard.component.html',
@@ -17,12 +16,21 @@ export class JobcardComponent implements OnInit {
   onSubmit(data:NgForm)
   {
     
-    this.apiservice.vjasinsertcar(data.value).subscribe((response:Array<object>)=>{
-      this.mydata = response;
-      if([this.mydata].length > 0)
+    this.apiservice.vjasinsertcar(data.value).subscribe((response:any)=>{
+     
+      console.log(response);
+      if([response].length > 0)
       {
-        console.log(this.mydata);
-        alert('New JobCard Created');
+        if(!response)
+        {
+          alert('Registration/Chassis No already exists!!');
+        }
+        else
+        {
+          alert('New JobCard Created');
+          var carid = response._id;
+          console.log(carid);
+        }
       }
     });
   }
