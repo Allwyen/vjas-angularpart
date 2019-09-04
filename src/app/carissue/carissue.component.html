@@ -1,3 +1,15 @@
-<p>
-  carissue works!
-</p>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/staffhome">Home</a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" routerLink="/newjobcard">New JobCard</a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link" routerLink="/updatejobcard">Search Vehicle</a>
+        </li>
+  </ul>
+  <button class="float-right btn btn-light" (click)="logout()">LogOut</button>
+</nav>
+

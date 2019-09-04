@@ -13,7 +13,7 @@ export class CarserviceComponent implements OnInit {
   constructor(private router:Router,private apiservice:ApiService) { }
 
   status=true;
-
+  carid;
   mydata:Array<object> = [];
   
   onSubmit(data:NgForm)
@@ -39,6 +39,8 @@ export class CarserviceComponent implements OnInit {
           }
           else
           {
+            console.log("Response CarID: "+response._id);
+            this.carid = response._id;
             this.status=false;
             this.mydata=[response];
           }
@@ -50,7 +52,7 @@ export class CarserviceComponent implements OnInit {
 
   updatecar()
   {
-    console.log(this.mydata[0]);
+    console.log("Mydata: "+this.mydata[0]);
     this.apiservice.vjasupdatecar(this.mydata[0]).subscribe((response:any)=>{
       console.log(response);
       if(!response)
@@ -60,6 +62,9 @@ export class CarserviceComponent implements OnInit {
       else
       {
         alert('Updated Successfully!!');
+        console.log("CarID: "+this.carid);
+        localStorage.setItem('cid',this.carid);
+        this.router.navigateByUrl('/carissue');
       }
     });
   }

@@ -14,8 +14,12 @@ export class CarissueComponent implements OnInit {
   ngOnInit() {
     const userid = localStorage.getItem('uid');
     const userrole = localStorage.getItem('uroleid')
-    console.log('User ID :'+userid);
+    const carid = localStorage.getItem('cid');
 
+    console.log('User ID :'+userid);
+    console.log('User Role: '+userrole);
+    console.log('Car ID: '+carid);
+    
     if(userid === null )
     {
       this.router.navigateByUrl('');

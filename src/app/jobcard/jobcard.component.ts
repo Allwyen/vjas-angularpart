@@ -30,6 +30,8 @@ export class JobcardComponent implements OnInit {
           alert('New JobCard Created');
           var carid = response._id;
           console.log(carid);
+          localStorage.setItem('cid',carid);
+          this.router.navigateByUrl('/carissue');
         }
       }
     });
