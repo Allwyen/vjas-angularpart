@@ -53,4 +53,9 @@ export class ApiService {
   {
     return this.http.post("http://localhost:5566/vjasupdatecar",data);
   }
+
+  vjasinsertissue(data)
+  {
+    return this.http.post("http://localhost:5566/vjasinsertissue",data);
+  }
 }
