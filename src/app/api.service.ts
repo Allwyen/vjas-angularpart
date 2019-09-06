@@ -58,4 +58,24 @@ export class ApiService {
   {
     return this.http.post("http://localhost:5566/vjasinsertissue",data);
   }
+
+  vjasviewmechanic()
+  {
+    return this.http.get("http://localhost:5566/vjasviewmechanic");
+  }
+
+  vjasviewcarassign(data)
+  {
+    return this.http.post("http://localhost:5566/vjasviewcarassign",data);
+  }
+
+  vjasinsertcarassign(data)
+  {
+    return this.http.post("http://localhost:5566/vjasinsertcarassign",data);
+  }
+
+  vjasupdatejstatus(data)
+  {
+    return this.http.post("http://localhost:5566/vjasupdatejstatus",data);
+  }
 }

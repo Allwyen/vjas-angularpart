@@ -42,7 +42,7 @@ import { CarissueComponent } from './carissue/carissue.component';
     UserapprovalComponent,
     CarserviceComponent,
     JobcardComponent,
-    CarissueComponent
+    CarissueComponent,
   ],
   imports: [
     BrowserModule,

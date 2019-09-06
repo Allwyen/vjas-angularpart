@@ -12,7 +12,10 @@ export class CarissueComponent implements OnInit {
   constructor(private apiservice:ApiService,private router:Router) { }
 
   mydata:Array<object>=[];
-  
+  mydropdown:Array<object> = [];
+  staffid:Array<object>=[];
+  myassign:Array<object> = [];
+
   ireadings:Number;
   icomments:String;
   idate:Date;
@@ -20,11 +23,15 @@ export class CarissueComponent implements OnInit {
   istaffid:String;
   date:String;
   time:String;
-
+  astaffid:String;
   onSubmit(data:NgForm)
   {
     this.ireadings = [data.value][0].ireadings;
     this.icomments = [data.value][0].icomments;
+    this.astaffid = [data.value][0].astaffid;
+
+    this.staffid = [{astaffid:this.astaffid}];
+
     this.idate = new Date();
 
     this.date = this.idate.getFullYear()+'-'+(this.idate.getMonth()+1)+'-'+this.idate.getDate();
@@ -40,6 +47,15 @@ export class CarissueComponent implements OnInit {
         icarid:this.icarid
       }
     ];
+
+    this.myassign = [
+      {
+        astatus:0,
+        acarid:this.icarid,
+        astaffid:this.astaffid
+      }
+    ];
+
     console.log(this.mydata[0]);
 
     if(this.ireadings === null || this.icomments === '' || [data.value][0].ireadings ==='')
@@ -48,15 +64,40 @@ export class CarissueComponent implements OnInit {
     }
     else
     {
-      this.apiservice.vjasinsertissue(this.mydata[0]).subscribe((response:any)=>{
-        console.log(response);
-        if([response].length > 0)
+      this.apiservice.vjasviewcarassign(this.myassign[0]).subscribe((response:any)=>{
+        console.log(response.length);
+
+        if(response.length > 0)
         {
-          alert('Vehicle Issue Registered!!');
-          localStorage.removeItem('cid');
-          this.router.navigateByUrl('/staffhome');
+          alert('Vehicle is already under service!!');
         }
+        else
+        {
+          this.apiservice.vjasinsertissue(this.mydata[0]).subscribe((response:any)=>{
+            console.log(response);
+            if([response].length > 0)
+            {
+              alert('Vehicle Issue Registered!!');
+
+              this.apiservice.vjasinsertcarassign(this.myassign[0]).subscribe((response:any)=>{
+                console.log([response].length);
+
+                if([response].length > 0)
+                {
+                  this.apiservice.vjasupdatejstatus(this.staffid[0]).subscribe((response:any)=>{
+                    console.log(response);
+                    alert('Staff allocated for work!!');
+                    localStorage.removeItem('cid');
+                    this.router.navigateByUrl('/staffhome');
+                  });
+                }
+              });
+            }
+          });
+        }
+
       });
+
     }
   }
 
@@ -85,6 +126,10 @@ export class CarissueComponent implements OnInit {
       this.router.navigateByUrl('/staffhome');
     }
   
+    this.apiservice.vjasviewmechanic().subscribe((response:any)=>{
+      console.log(response);
+      this.mydropdown=response;
+    });
   }
 
   logout()

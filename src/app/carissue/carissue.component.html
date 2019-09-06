@@ -19,6 +19,11 @@
     <tr><td></td><td><h4>Note down the work</h4></td></tr>
     <tr><td>Readings</td><td><input type="number" class="form-control" name="ireadings" required ngModel></td></tr>
     <tr><td>Enter Issues</td><td><textarea name="icomments" class="form-control" cols="30" rows="5" required ngModel></textarea></td></tr>
+    <tr><td>Assign Worker</td><td>
+      <select name="astaffid" class="form-control"  ngModel>
+        <option value={{data._id}} class="form-control" *ngFor="let data of mydropdown">{{data.fname}}</option>
+      </select>
+    </td></tr>
     <tr><td></td><td><input type="submit" class="btn btn-primary" value="Submit"></td></tr>
   </div>
   </table>
