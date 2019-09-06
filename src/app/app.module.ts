@@ -14,7 +14,8 @@ const appRoutes:Routes = [
   {path:'userapproval',component:UserapprovalComponent},
   {path:'updatejobcard',component:CarserviceComponent},
   {path:'newjobcard',component:JobcardComponent},
-  {path:'carissue',component:CarissueComponent}
+  {path:'carissue',component:CarissueComponent},
+  {path:'viewtask',component:ViewtaskComponent}
   
 ];
 
@@ -29,6 +30,7 @@ import { UserapprovalComponent } from './userapproval/userapproval.component';
 import { CarserviceComponent } from './carservice/carservice.component';
 import { JobcardComponent } from './jobcard/jobcard.component';
 import { CarissueComponent } from './carissue/carissue.component';
+import { ViewtaskComponent } from './viewtask/viewtask.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { CarissueComponent } from './carissue/carissue.component';
     CarserviceComponent,
     JobcardComponent,
     CarissueComponent,
+    ViewtaskComponent,
   ],
   imports: [
     BrowserModule,

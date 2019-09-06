@@ -78,4 +78,11 @@ export class ApiService {
   {
     return this.http.post("http://localhost:5566/vjasupdatejstatus",data);
   }
+
+  /* Mechanic Section */
+
+  vjasviewmechanictask(data)
+  {
+    return this.http.post("http://localhost:5566/vjasviewmechanictask",data);
+  }
 }

@@ -24,6 +24,8 @@ export class CarissueComponent implements OnInit {
   date:String;
   time:String;
   astaffid:String;
+  myissue:String;
+
   onSubmit(data:NgForm)
   {
     this.ireadings = [data.value][0].ireadings;
@@ -48,13 +50,14 @@ export class CarissueComponent implements OnInit {
       }
     ];
 
-    this.myassign = [
-      {
-        astatus:0,
-        acarid:this.icarid,
-        astaffid:this.astaffid
-      }
-    ];
+    // this.myassign = [
+    //   {
+    //     astatus:0,
+    //     acarid:this.icarid,
+    //     astaffid:this.astaffid,
+    //     aissueid:this.myissue
+    //   }
+    // ];
 
     console.log(this.mydata[0]);
 
@@ -75,6 +78,18 @@ export class CarissueComponent implements OnInit {
         {
           this.apiservice.vjasinsertissue(this.mydata[0]).subscribe((response:any)=>{
             console.log(response);
+            this.myissue = [response][0]._id;
+
+            this.myassign = [
+              {
+                astatus:0,
+                acarid:this.icarid,
+                astaffid:this.astaffid,
+                aissueid:this.myissue
+              }
+            ];
+            console.log(this.myissue);
+            console.log(this.myassign);
             if([response].length > 0)
             {
               alert('Vehicle Issue Registered!!');

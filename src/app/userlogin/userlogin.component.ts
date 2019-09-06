@@ -48,6 +48,14 @@ export class UserloginComponent implements OnInit {
         }
         else if(response[0].urole == 2)
         {
+          alert('Login Successfull!!');
+
+          const uid = response[0]._id;
+          const uroleid = response[0].urole;
+
+          localStorage.setItem('uid',uid);
+          localStorage.setItem('uroleid',uroleid);
+
           this.router.navigateByUrl('mechanichome');
         }
         else if(response[0].urole == 3)
