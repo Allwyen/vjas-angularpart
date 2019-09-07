@@ -37,6 +37,11 @@ export class ApiService {
     return this.http.post("http://localhost:5566/vjasuserstatus",data);
   }
 
+  vjaspendingcar()
+  {
+    return this.http.get("http://localhost:5566/vjaspendingcar");
+  }
+
   /* Staff Section */
 
   vjasviewcar(data)

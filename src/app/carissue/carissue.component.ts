@@ -94,19 +94,30 @@ export class CarissueComponent implements OnInit {
             {
               alert('Vehicle Issue Registered!!');
 
-              this.apiservice.vjasinsertcarassign(this.myassign1[0]).subscribe((response:any)=>{
-                console.log([response].length);
+              if(this.icarid != "" && this.astaffid != "")
+              {
+                this.apiservice.vjasinsertcarassign(this.myassign1[0]).subscribe((response:any)=>{
+                  console.log([response].length);
+  
+                  if([response].length > 0)
+                  {
+                    this.apiservice.vjasupdatejstatus(this.staffid[0]).subscribe((response:any)=>{
+                      console.log(response);
+                      alert('Staff allocated for work!!');
+                      localStorage.removeItem('cid');
+                      this.router.navigateByUrl('/staffhome');
+                    });
+                  }
+                });
+              }
+              else
+              {
+                alert('Staff Busy now!!Admin will assign task');
+                localStorage.removeItem('cid');
+                this.router.navigateByUrl('/staffhome');
+              }
 
-                if([response].length > 0)
-                {
-                  this.apiservice.vjasupdatejstatus(this.staffid[0]).subscribe((response:any)=>{
-                    console.log(response);
-                    alert('Staff allocated for work!!');
-                    localStorage.removeItem('cid');
-                    this.router.navigateByUrl('/staffhome');
-                  });
-                }
-              });
+              
             }
           });
         }
