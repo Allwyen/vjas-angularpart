@@ -11,6 +11,45 @@ export class ViewtaskComponent implements OnInit {
   constructor(private router:Router,private apiservice:ApiService) { }
 
   myuserid:Array<object> = [];
+  mydata:Array<object> = [];
+  assigndata:Array<object> = [];
+  jstatusdata:Array<object> = [];
+  
+  updateassignstatus(x,y,z)
+  { 
+    console.log("Assign_ID: "+x+" Assign_Status: "+y); 
+    var aid = x;
+    var astatus = parseInt(y);
+    var astaffid = z;
+
+    this.assigndata = [{aid:aid,astatus:astatus}]
+    console.log(this.assigndata);
+    
+    this.jstatusdata = [{astaffid:astaffid}];
+
+    if(astatus == 1)
+    {
+      this.apiservice.vjasupdateastatus(this.assigndata[0]).subscribe((response:any)=>{
+        console.log(response);
+        alert('This work is now in ongong state');
+      });
+    }
+    else if(astatus == 2)
+    {
+      this.apiservice.vjasupdateastatus(this.assigndata[0]).subscribe((response:any)=>{
+        console.log(response);
+
+        if([response].length > 0)
+        {
+          this.apiservice.vjasrevokejstatus(this.jstatusdata[0]).subscribe((response:any)=>{
+            console.log(response);
+            alert('Assigned task Completed!!');
+            this.router.navigateByUrl('/mechanichome');
+          });
+        }
+      });
+    }
+  }
 
   ngOnInit() {
 
@@ -30,7 +69,31 @@ export class ViewtaskComponent implements OnInit {
     this.myuserid = [{myuserid:userid}];
 
     this.apiservice.vjasviewmechanictask(this.myuserid[0]).subscribe((response:any)=>{
-      console.log(response);
+      if(response.length == 0)
+      {
+        alert('No new task available yet!!');
+      }
+      else
+      {
+        for(var i=0;i<response.length;i++)
+        {
+          if(response[i].astatus == 0)
+          {
+            response[i].astatus = "Assigned to staff";
+          }
+          else if(response[i].astatus == 1)
+          {
+            response[i].astatus = "Work Ongoing";
+          }
+          else if(response[i].astatus == 2)
+          {
+            response[i].astatus = "Completed";
+          }
+        }
+        this.mydata = response;
+        console.log(this.mydata);
+      }
+      
     });
 
   }

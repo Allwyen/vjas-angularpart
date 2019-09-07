@@ -15,6 +15,7 @@ export class CarissueComponent implements OnInit {
   mydropdown:Array<object> = [];
   staffid:Array<object>=[];
   myassign:Array<object> = [];
+  myassign1:Array<object> = [];
 
   ireadings:Number;
   icomments:String;
@@ -50,14 +51,13 @@ export class CarissueComponent implements OnInit {
       }
     ];
 
-    // this.myassign = [
-    //   {
-    //     astatus:0,
-    //     acarid:this.icarid,
-    //     astaffid:this.astaffid,
-    //     aissueid:this.myissue
-    //   }
-    // ];
+    this.myassign = [
+      {
+        astatus:0,
+        acarid:this.icarid,
+        astaffid:this.astaffid
+      }
+    ];
 
     console.log(this.mydata[0]);
 
@@ -80,7 +80,7 @@ export class CarissueComponent implements OnInit {
             console.log(response);
             this.myissue = [response][0]._id;
 
-            this.myassign = [
+            this.myassign1 = [
               {
                 astatus:0,
                 acarid:this.icarid,
@@ -94,7 +94,7 @@ export class CarissueComponent implements OnInit {
             {
               alert('Vehicle Issue Registered!!');
 
-              this.apiservice.vjasinsertcarassign(this.myassign[0]).subscribe((response:any)=>{
+              this.apiservice.vjasinsertcarassign(this.myassign1[0]).subscribe((response:any)=>{
                 console.log([response].length);
 
                 if([response].length > 0)

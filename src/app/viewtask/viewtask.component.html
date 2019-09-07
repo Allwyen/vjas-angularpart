@@ -10,4 +10,22 @@
     <button class="float-right btn btn-light" (click)="logout()">LogOut</button>
   </nav>
 
-  
+<table class="table">
+    <div *ngFor="let data of mydata">
+      <tr><input type="hidden" name="aid" #aid [(ngModel)]="data._id"></tr>
+      <tr><input type="hidden" name="astaffid" #astaffid [(ngModel)]="data.astaffid"></tr>
+      <tr><td></td><td><h5>Car Details</h5></td></tr>
+      <tr><td>Registration No:</td><td *ngFor="let car of data.cars"><input type="text" class="form-control" name="cregno" [(ngModel)]="car.cregno" disabled></td></tr>
+      <tr><td>Car Model:</td><td *ngFor="let car of data.cars"><input type="text" class="form-control" name="cmodel" [(ngModel)]="car.cmodel" disabled></td></tr>
+      <tr><td>Car Readings:</td><td *ngFor="let issue of data.issues"><input type="text" class="form-control" name="ireadings" [(ngModel)]="issue.ireadings" disabled></td></tr>
+      <tr><td>Work to be done:</td><td *ngFor="let issue of data.issues"><textarea class="form-control" name="icomments" cols="30" rows="3" [(ngModel)]="issue.icomments" disabled></textarea></td></tr>
+      <tr><td>About Work:</td><td><label [ngClass]="{'text-danger':data.astatus}">{{data.astatus}}</label><br><small><strong>N.B: </strong>Update the status once work is started</small></td></tr>
+      <tr><td>Set Status:</td><td>
+        <select class="form-control" name="astatusset" #astatusset>
+          <option selected>Choose...</option>
+          <option value="1">Work Ongoing</option>
+          <option class="text-success" value="2">Completed</option>
+        </select></td></tr>
+      <tr><td></td><td><input type="button" class="btn btn-primary" (click)="updateassignstatus(aid.value,astatusset.value,astaffid.value)" value="Update Status"></td></tr>
+    </div>
+</table>
