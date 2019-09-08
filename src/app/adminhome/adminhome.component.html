@@ -12,3 +12,16 @@
   </ul>
   <button class="float-right btn btn-light" (click)="logout()">LogOut</button>
 </nav>
+
+<div class="container mt-5">
+  <div class="row justify-content-md-center">
+      <div class="col col-12">
+          <div class="jumbotron" *ngFor="let data of mydata">
+              <h1 class="display-4">Welcome, {{data.uname}}!!</h1>
+              <p class="lead">Everthing is under your control!!</p>
+              <hr class="my-4">
+              <p>Functionalities - Set User Role, Assign task, Work status</p>
+          </div>
+      </div>
+  </div>
+</div>

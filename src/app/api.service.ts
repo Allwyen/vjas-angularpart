@@ -25,6 +25,11 @@ export class ApiService {
     return this.http.post("http://localhost:5566/vjasforgotpwd",data);
   }
 
+  vjasgetuser(data)
+  {
+    return this.http.post("http://localhost:5566/vjasgetuser",data);
+  }
+
   /* Admin Section */
 
   vjasviewuser()
@@ -104,5 +109,15 @@ export class ApiService {
   vjascownersendemail(data)
   {
     return this.http.post("http://localhost:5566/vjascownersendemail",data);
+  }
+
+  vjasmechcompletedtask(data)
+  {
+    return this.http.post("http://localhost:5566/vjasmechcompletedtask",data);
+  }
+
+  vjasmechcompletedtasksearch(data)
+  {
+    return this.http.post("http://localhost:5566/vjasmechcompletedtasksearch",data);
   }
 }

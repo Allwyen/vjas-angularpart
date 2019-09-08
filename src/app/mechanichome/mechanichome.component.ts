@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
 @Component({
   selector: 'app-mechanichome',
   templateUrl: './mechanichome.component.html',
@@ -7,7 +8,12 @@ import { Router } from '@angular/router';
 })
 export class MechanichomeComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private apiservice:ApiService) { }
+
+  mydata:Array<object> = [];
+  
+  myuserid:Array<object> = [];
+  uid:String;
 
   ngOnInit() {
     const userid = localStorage.getItem('uid');
@@ -22,6 +28,15 @@ export class MechanichomeComponent implements OnInit {
     {
       this.router.navigateByUrl('');
     }
+
+    this.uid = userid;
+    this.myuserid = [{uid:userid}];
+
+    this.apiservice.vjasgetuser(this.myuserid[0]).subscribe((response:any)=>{
+      this.mydata=response;
+    });
+
+
   }
   logout()
   {
