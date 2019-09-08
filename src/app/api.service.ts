@@ -100,4 +100,9 @@ export class ApiService {
   {
     return this.http.post("http://localhost:5566/vjasrevokejstatus",data);
   }
+
+  vjascownersendemail(data)
+  {
+    return this.http.post("http://localhost:5566/vjascownersendemail",data);
+  }
 }

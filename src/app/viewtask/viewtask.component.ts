@@ -14,7 +14,11 @@ export class ViewtaskComponent implements OnInit {
   mydata:Array<object> = [];
   assigndata:Array<object> = [];
   jstatusdata:Array<object> = [];
+  cownerdata:Array<object> = [];
   
+  coemail:String;
+  coname:String;
+
   updateassignstatus(x,y,z)
   { 
     console.log("Assign_ID: "+x+" Assign_Status: "+y); 
@@ -43,8 +47,19 @@ export class ViewtaskComponent implements OnInit {
         {
           this.apiservice.vjasrevokejstatus(this.jstatusdata[0]).subscribe((response:any)=>{
             console.log(response);
-            alert('Assigned task Completed!!');
-            this.router.navigateByUrl('/mechanichome');
+            
+            if([response].length > 0)
+            {
+              alert('Assigned task Completed!!');
+              this.cownerdata = [{coemail:this.coemail,coname:this.coname}];
+              console.log(this.cownerdata);
+
+              this.apiservice.vjascownersendemail(this.cownerdata[0]).subscribe((response:any)=>{
+                console.log(response);
+                alert('Email notification has been sent!!');
+                this.router.navigateByUrl('/mechanichome');
+              });
+            }
           });
         }
       });
@@ -92,6 +107,9 @@ export class ViewtaskComponent implements OnInit {
         }
         this.mydata = response;
         console.log(this.mydata);
+    
+        this.coemail = response[0].cars[0].coemail;
+        this.coname = response[0].cars[0].coname;
       }
       
     });
