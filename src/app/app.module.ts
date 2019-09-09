@@ -17,7 +17,8 @@ const appRoutes:Routes = [
   {path:'carissue',component:CarissueComponent},
   {path:'viewtask',component:ViewtaskComponent},
   {path:'pendingcar',component:PendingcarComponent},
-  {path:'mechcompletedtask',component:MechcompletedtaskComponent}
+  {path:'mechcompletedtask',component:MechcompletedtaskComponent},
+  {path:'workstatus',component:WorkstatusComponent}
   
 ];
 
@@ -35,6 +36,7 @@ import { CarissueComponent } from './carissue/carissue.component';
 import { ViewtaskComponent } from './viewtask/viewtask.component';
 import { PendingcarComponent } from './pendingcar/pendingcar.component';
 import { MechcompletedtaskComponent } from './mechcompletedtask/mechcompletedtask.component';
+import { WorkstatusComponent } from './workstatus/workstatus.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { MechcompletedtaskComponent } from './mechcompletedtask/mechcompletedtas
     ViewtaskComponent,
     PendingcarComponent,
     MechcompletedtaskComponent,
+    WorkstatusComponent,
   ],
   imports: [
     BrowserModule,

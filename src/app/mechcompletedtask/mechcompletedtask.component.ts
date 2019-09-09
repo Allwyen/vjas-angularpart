@@ -43,16 +43,25 @@ export class MechcompletedtaskComponent implements OnInit {
             this.myuserid = [{astaffid:this.staffid,acarid:[response][0]._id}];
 
             this.apiservice.vjasmechcompletedtasksearch(this.myuserid[0]).subscribe((response:any)=>{
-              console.log(response);
-      
-              for(var i=0;i<response.length ; i++)
+              console.log(response.length);
+
+              if(response.length > 0)
               {
-                if(response[i].astatus == 2)
-                {
-                  response[i].astatus = "Completed"
-                }
+
+                for(var i=0;i<response.length ; i++)
+                  {
+                    if(response[i].astatus == 2)
+                    {
+                      response[i].astatus = "Completed"
+                    }
+                  }
+                  this.mydata = response;
               }
-              this.mydata = response;
+              else
+              {
+                alert('No data found!!');
+              }
+              
             });
           }
         }

@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/adminhome">Home</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/userapproval">Users</a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" routerLink="/pendingcar">Pending Cars</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/workstatus">Search</a>
+      </li>
+  </ul>
+  <button class="float-right btn btn-light" (click)="logout()">LogOut</button>
+</nav>
+
+<form (ngSubmit)=onSubmit(f) #f="ngForm">
+  <table class="table">
+    <tr><td><input type="text" name="cregno" class="form-control" placeholder="Enter Car Registration No" ngModel></td><td><input type="submit" class="btn btn-primary" value="Search"></td></tr>
+  </table>
+</form>
+
+<div class="card-columns p-5" *ngIf="status else nodata">
+  <div class="card" *ngFor="let data of mydata">
+      <div class="card-body">
+          <h5 class="card-title" *ngFor="let item of data.car">{{item.cregno}}</h5>
+          <p class="card-text">
+              <strong>Model: </strong><label *ngFor="let item of data.car">{{item.cmodel}}</label><br>
+              <strong>Owner: </strong><label *ngFor="let item of data.car">{{item.coname}}</label><br>
+              <strong>Date: </strong><label *ngFor="let item of data.issue">{{item.idate}}</label><br>
+              <strong>JobCard: </strong><label *ngFor="let item of data.issue">{{item.icomments}}</label><br>
+              <strong>Assigned By: </strong><label *ngFor="let item of data.issuestaff">{{item.fname}}</label><br>
+              <strong>Work Done By: </strong><label *ngFor="let item of data.assignstaff">{{item.fname}}</label><br>
+              <strong>Status: </strong><label  [ngClass]="{'text-danger': data.astatus}">{{data.astatus}}</label><br>
+          </p>
+      </div>
+  </div>
+</div>
+
+<ng-template #nodata>
+  <div class="card-columns p-5">
+    <div class="card" *ngFor="let data of mydata">
+        <div class="card-body">
+            <h5 class="card-title" *ngFor="let item of data.cars">{{item.cregno}}</h5>
+            <p class="card-text">
+                <strong>Model: </strong><label *ngFor="let item of data.cars">{{item.cmodel}}</label><br>
+                <strong>Owner: </strong><label *ngFor="let item of data.cars">{{item.coname}}</label><br>
+                <strong>Mobile: </strong><label *ngFor="let item of data.cars">{{item.comobile}}</label><br>
+                <strong>Date: </strong><label *ngFor="let item of data.issues">{{item.idate}}</label><br>
+                <strong>Readings: </strong><label *ngFor="let item of data.issues">{{item.ireadings}}</label><br>
+                <strong>Complaints: </strong><label *ngFor="let item of data.issues">{{item.icomments}}</label><br>
+                <strong>Status: </strong><label [ngClass]="{'text-danger': data.astatus}">{{data.astatus}}</label><br>
+            </p>
+        </div>
+    </div>
+  </div>
+</ng-template>
