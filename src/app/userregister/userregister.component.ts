@@ -12,16 +12,37 @@ export class UserregisterComponent implements OnInit {
 
   getpwd= '';
   getcpwd = '';
-
+  getmobile ='';
   onSubmit(data:NgForm)
   {
     console.log(data.value);
 
     this.getpwd = data.value.upass;
     this.getcpwd = data.value.ucpass;
-    if(this.getpwd != this.getcpwd )
+    this.getmobile = data.value.umobile;
+
+    const validEmailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const mobilepattern = /[0-9\+\-\ ]/;
+
+    if(data.value.fname == ''||data.value.umobile == ''||data.value.uname == ''||data.value.uaddress == ''||data.value.uemail == ''||data.value.upass == ''||data.value.ucpass == '')
+    {
+      alert('Please fill all fileds!!');
+    }
+    else if(this.getpwd != this.getcpwd )
     {
       alert("Passwords don't match");
+    }
+    else if(!(validEmailRegEx.test(data.value.uemail)))
+    {
+      alert('Email Format Not Correct!!')
+    }
+    else if(!(mobilepattern.test(data.value.umobile)))
+    {
+      alert('Mobile Format Not Correct!!');
+    }
+    else if(this.getmobile.length <10 || this.getmobile.length > 10)
+    {
+      alert('Enter a 10 digit Mobile No!!');
     }
     else
     {

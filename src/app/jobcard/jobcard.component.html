@@ -13,17 +13,51 @@
     <button class="float-right btn btn-light" (click)="logout()">LogOut</button>
   </nav>
 
-  <form (ngSubmit)=onSubmit(f) #f="ngForm">
-      <table class="table">
-          <div>
-            <tr><td></td><td><h5>Enter the Car Details</h5></td></tr>
-            <tr><td>Registration No:</td><td><input type="text" class="form-control" name="cregno" ngModel></td></tr>
-            <tr><td>Car Model:</td><td><input type="text" class="form-control" name="cmodel" ngModel></td></tr>
-            <tr><td>Chassis No:</td><td><input type="text" class="form-control" name="ccno" ngModel></td></tr>
-            <tr><td>Owner Name:</td><td><input type="text" class="form-control" name="coname" ngModel></td></tr>
-            <tr><td>Email:</td><td><input type="email" class="form-control" name="coemail" ngModel></td></tr>
-            <tr><td>Mobile:</td><td><input type="text" class="form-control" name="comobile" ngModel></td></tr>
-            <tr><td><input type="reset" class="btn btn-danger" value="Reset"></td><td><input type="submit" class="btn btn-primary" value="Register Car"></td></tr>
-          </div>
-      </table>
-    </form>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+  
+  <div class="container register">
+                  <div class="row">
+                      <div class="col-md-3 register-left">
+                          
+                      </div>
+                      <div class="col-md-9 register-right">
+                          <div class="tab-content">
+                              <div class="tab-pane fade show active">
+                                  <h3 class="register-heading">New JobCard!!</h3>
+                                  <form (ngSubmit)=onSubmit(f) #f="ngForm">
+                                    <div class="row register-form">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="cregno" placeholder="Registration No *" ngModel>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="cmodel" placeholder="Car Model *" ngModel>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="ccno" placeholder="Chassis No *" ngModel>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="coname" placeholder="Owner Name *" ngModel>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" name="coemail" placeholder="Email *" ngModel>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="comobile" placeholder="Mobile *" ngModel>
+                                            </div>
+                                            <input type="reset" class="btnDanger" value="Reset"/>
+                                            <input type="submit" class="btnRegister"  value="Register Car"/>                                    
+                                        </div>
+                                    </div>
+                                    </form>
+                              </div>
+                             
+                          </div>
+                      </div>
+                  </div>
+  
+              </div>

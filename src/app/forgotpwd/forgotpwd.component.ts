@@ -20,7 +20,12 @@ export class ForgotpwdComponent implements OnInit {
 
     this.getpwd = data.value.upass;
     this.getcpwd = data.value.ucpass;
-    if(this.getpwd != this.getcpwd )
+
+    if(data.value.uemail == '' ||data.value.upass == '' ||data.value.ucpass == '')
+    {
+      alert('Please fill all fields!!');
+    }
+    else if(this.getpwd != this.getcpwd )
     {
       alert("Passwords don't match");
     }

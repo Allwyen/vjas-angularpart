@@ -17,7 +17,7 @@
     <div *ngFor="let data of mydata">
       <tr><input type="hidden" name="aid" #aid [(ngModel)]="data._id"></tr>
       <tr><input type="hidden" name="astaffid" #astaffid [(ngModel)]="data.astaffid"></tr>
-      <tr><td></td><td><h5>Car Details</h5></td></tr>
+      <tr><td><h5>Car Details</h5></td></tr>
       <tr><td>Registration No:</td><td *ngFor="let car of data.cars"><input type="text" class="form-control" name="cregno" [(ngModel)]="car.cregno" disabled></td></tr>
       <tr><td>Car Model:</td><td *ngFor="let car of data.cars"><input type="text" class="form-control" name="cmodel" [(ngModel)]="car.cmodel" disabled></td></tr>
       <tr><td>Car Readings:</td><td *ngFor="let issue of data.issues"><input type="text" class="form-control" name="ireadings" [(ngModel)]="issue.ireadings" disabled></td></tr>

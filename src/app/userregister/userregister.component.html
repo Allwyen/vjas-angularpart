@@ -9,15 +9,57 @@
   </ul>
 </nav>
 
-<form (ngSubmit)=onSubmit(f) #f="ngForm">
-  <table class="table">
-    <tr><td>Fullname</td><td><input type="text" class="form-control" name="fname" ngModel></td></tr>
-    <tr><td>Email</td><td><input type="email" class="form-control" name="uemail" ngModel></td></tr>
-    <tr><td>Address</td><td><textarea name="uaddress" class="form-control" cols="30" rows="3" ngModel></textarea></td></tr>
-    <tr><td>Mobile</td><td><input type="tel" class="form-control" name="umobile" ngModel></td></tr>
-    <tr><td>Username</td><td><input type="text" class="form-control" name="uname" ngModel></td></tr>
-    <tr><td>Password</td><td><input type="password" class="form-control" name="upass" ngModel></td></tr>
-    <tr><td>Confirm Password</td><td><input type="password" class="form-control" name="ucpass" ngModel></td></tr>
-    <tr><td><input type="reset" class="btn btn-danger" value="Clear"></td><td><input type="submit" class="btn btn-primary" value="Register"></td></tr>
-  </table>
-</form>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active">
+                                <h3 class="register-heading">Register Here!!</h3>
+                                <form (ngSubmit)=onSubmit(f) #f="ngForm">
+                                  <div class="row register-form">
+                                      <div class="col-md-6">
+                                          <div class="form-group">
+                                              <input type="text" class="form-control" name="fname" placeholder="Full Name *" ngModel>
+                                          </div>
+                                          <div class="form-group">
+                                              <input type="tel" class="form-control" name="umobile" placeholder="Mobile *" ngModel>
+                                          </div>
+                                          <div class="form-group">
+                                              <input type="text" class="form-control" name="uname" placeholder="User Name *" ngModel>
+                                          </div>
+                                          <div class="form-group">
+                                              <textarea name="uaddress" class="form-control" cols="30" rows="3" placeholder="Address *" ngModel></textarea>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <div class="form-group">
+                                              <input type="email" class="form-control" name="uemail" placeholder="Email *" ngModel>
+                                          </div>
+                                          <div class="form-group">
+                                              <input type="password" class="form-control" name="upass" placeholder="Password *" ngModel>
+                                          </div>
+                                          <div class="form-group">
+                                              <input type="password" class="form-control" name="ucpass" placeholder="Confirm Password *" ngModel>
+                                          </div>
+                                          <input type="reset" class="btnDanger" value="Reset"/>
+                                          <input type="submit" class="btnRegister"  value="Register"/>                                    
+                                      </div>
+                                  </div>
+                                  </form>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+           

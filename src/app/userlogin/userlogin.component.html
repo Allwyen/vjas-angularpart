@@ -9,10 +9,28 @@
   </ul>
 </nav>
 
-<form (ngSubmit)=onSubmit(f) #f="ngForm">
-  <table class="table">
-    <tr><td>Email</td><td><input type="email" class="form-control" name="uemail" ngModel></td></tr>
-    <tr><td>Password</td><td><input type="password" class="form-control" name="upass" ngModel></td></tr>
-    <tr><td><a href="/forgotpwd">Forgot Password?</a></td><td><input type="submit" class="btn btn-primary" value="Login"></td></tr>
-  </table>
-</form>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!--
+    you can substitue the span of reauth email for a input with the email and
+    include the remember me checkbox
+    -->
+    <div class="container register">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" (ngSubmit)=onSubmit(f) #f="ngForm">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" name="uemail" class="form-control" placeholder="Email address" required autofocus ngModel>
+                <input type="password" name="upass" class="form-control" placeholder="Password" required ngModel>               
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+            <a routerLink="/forgotpwd" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->

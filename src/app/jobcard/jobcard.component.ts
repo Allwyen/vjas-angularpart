@@ -13,28 +13,54 @@ export class JobcardComponent implements OnInit {
 
   mydata:Array<object> = [];
 
+  getmobile = '';
+
   onSubmit(data:NgForm)
   {
-    
-    this.apiservice.vjasinsertcar(data.value).subscribe((response:any)=>{
+    this.getmobile = data.value.comobile;
+
+    const validEmailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const mobilepattern = /[0-9\+\-\ ]/;
+
+    if(data.value.cregno == ''||data.value.cmodel == ''||data.value.ccno == ''||data.value.coname == ''||data.value.coemail == ''||data.value.comobile == '')
+    {
+      alert('Please fill form!!');
+    }
+    else if(!(validEmailRegEx.test(data.value.coemail)))
+    {
+      alert('Email Format Not Correct!!')
+    }
+    else if(!(mobilepattern.test(data.value.comobile)))
+    {
+      alert('Mobile Format Not Correct!!');
+    }
+    else if(this.getmobile.length <10 || this.getmobile.length > 10)
+    {
+      alert('Enter a 10 digit Mobile No!!');
+    }
+    else
+    {
+      this.apiservice.vjasinsertcar(data.value).subscribe((response:any)=>{
      
-      console.log(response);
-      if([response].length > 0)
-      {
-        if(!response)
+        console.log(response);
+        if([response].length > 0)
         {
-          alert('Registration/Chassis No already exists!!');
+          if(!response)
+          {
+            alert('Registration/Chassis No already exists!!');
+          }
+          else
+          {
+            alert('New JobCard Created');
+            var carid = response._id;
+            console.log(carid);
+            localStorage.setItem('cid',carid);
+            this.router.navigateByUrl('/carissue');
+          }
         }
-        else
-        {
-          alert('New JobCard Created');
-          var carid = response._id;
-          console.log(carid);
-          localStorage.setItem('cid',carid);
-          this.router.navigateByUrl('/carissue');
-        }
-      }
-    });
+      });
+    }
+    
   }
 
   ngOnInit() {
